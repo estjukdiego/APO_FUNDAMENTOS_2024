@@ -2,13 +2,13 @@
 $title = "Currículo Fast";
 ?>
 
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title><?php echo $title; ?></title>
+    <title>Currículo Fast</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script defer src="script.js"></script>
@@ -29,11 +29,21 @@ $title = "Currículo Fast";
             margin-top: 10px;
         }
     </style>
+    <script>
+        function calculateAge() {
+            var dob = document.getElementById('dob').value;
+            var dobDate = new Date(dob);
+            var diff = Date.now() - dobDate.getTime();
+            var ageDate = new Date(diff);
+            var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            document.getElementById('age').value = age;
+        }
+    </script>
 </head>
 <body>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item active" aria-current="page"><?php echo $title; ?></li>
+            <li class="breadcrumb-item active" aria-current="page">CURRÍCULO FAST</li>
         </ol>
     </nav>
 
@@ -46,8 +56,12 @@ $title = "Currículo Fast";
                     <input type="text" class="form-control" id="name" name="name">
                 </div>
                 <div class="form-group col-md-6">
+                    <label for="dob">Data de Nascimento</label>
+                    <input type="date" class="form-control" id="dob" name="dob" oninput="calculateAge()">
+                </div>
+                <div class="form-group col-md-6">
                     <label for="age">Idade</label>
-                    <input type="text" class="form-control" id="age" name="age">
+                    <input type="text" class="form-control" id="age" name="age" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="sex">Sexo</label>
